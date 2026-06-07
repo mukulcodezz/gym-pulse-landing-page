@@ -1,6 +1,10 @@
-# GymPulse — WhatsApp Automation for Gyms
+<div align="right">
+  <a href="https://gympulse-bot.vercel.app/">
+    <img src="https://img.shields.io/badge/Live%20Site-gympulse--bot.vercel.app-black?style=for-the-badge&logo=vercel" alt="Live Site" />
+  </a>
+</div>
 
-**Live:** [gympulse-bot.vercel.app](https://gympulse-bot.vercel.app/)
+# GymPulse — WhatsApp Automation for Gyms
 
 Landing page for **GymPulse**, a WhatsApp bot that runs a gym's entire lead and member pipeline — on the number the gym already uses. No app for members to install.
 
