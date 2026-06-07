@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GymPulse - the WhatsApp bot that grows your gym on autopilot</title>
+  <meta name="description" content="An automated WhatsApp assistant for gyms. Captures leads, books free trials, chases renewals, tracks check-ins and answers questions 24/7 on the number you already use. No app for members to install." />
+
+  <meta property="og:title" content="GymPulse - WhatsApp automation for gyms" />
+  <meta property="og:description" content="Capture leads, book trials, renew members and answer questions 24/7 on WhatsApp." />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!-- No-build static site: CDN fonts. Self-host before a high-traffic launch. -->
+  <link href="https://api.fontshare.com/v2/css?f[]=clash-display@500,600,700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="orb orb--1" aria-hidden="true"></div>
+  <div class="orb orb--2" aria-hidden="true"></div>
+
+  <!-- progress bar -->
+  <div class="scroll-prog" aria-hidden="true"><span id="progBar"></span></div>
+
+  <!-- ===================== NAV (floating glass pill) ===================== -->
+  <header class="nav" id="top">
+    <div class="nav__pill">
+      <a class="brand" href="#top" aria-label="GymPulse home">
+        <span class="brand__mark" aria-hidden="true"></span>
+        <span class="brand__name">GymPulse</span>
+      </a>
+
+      <nav class="nav__links" aria-label="Primary">
+        <a href="#features">Features</a>
+        <a href="demo.html">Demo</a>
+        <a href="#how">How it works</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#results">Results</a>
+      </nav>
+
+      <div class="nav__cta">
+        <a class="btn btn--ghost" href="#quote" data-open-quote>Get a quote</a>
+        <a class="btn btn--solid magnetic" href="#trial" data-open-trial>
+          <span>Start free trial</span>
+          <span class="btn__ic" aria-hidden="true"></span>
+        </a>
+      </div>
+
+      <button class="nav__burger" aria-label="Open menu" aria-expanded="false" data-burger>
+        <span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- fullscreen mobile menu -->
+  <div class="menu" id="menu" aria-hidden="true">
+    <nav class="menu__links" aria-label="Mobile">
+      <a href="#features">Features</a>
+      <a href="demo.html">Demo</a>
+      <a href="#how">How it works</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#results">Results</a>
+      <a class="btn btn--solid btn--lg" href="#trial" data-open-trial>Start free trial</a>
+      <a class="btn btn--ghost btn--lg" href="#quote" data-open-quote>Get a quote</a>
+    </nav>
+  </div>
+
+  <main>
+    <!-- ===================== HERO ===================== -->
+    <section class="hero">
+      <div class="hero__grid">
+        <div class="hero__copy">
+          <span class="eyebrow-pill" data-anim="fade">
+            <span class="dot"></span> WhatsApp automation for gyms
+          </span>
+
+          <h1 class="hero__title">
+            <span class="line"><span>Your front desk,</span></span>
+            <span class="line"><span>working <em>every hour</em></span></span>
+            <span class="line"><span>you sleep.</span></span>
+          </h1>
+
+          <p class="hero__sub">
+            GymPulse answers, books trials, chases renewals and logs check-ins on the
+            WhatsApp number you already use. No app for members to install.
+          </p>
+
+          <div class="hero__actions">
+            <a class="btn btn--solid btn--lg magnetic" href="#trial" data-open-trial>
+              <span>Start free trial</span>
+              <span class="btn__ic" aria-hidden="true"></span>
+            </a>
+            <a class="btn btn--ghost btn--lg" href="#quote" data-open-quote>Get a quote</a>
+          </div>
+
+          <ul class="hero__points">
+            <li>Lives on your existing number</li>
+            <li>Replies in seconds</li>
+            <li>Setup in an afternoon</li>
+          </ul>
+        </div>
+
+        <!-- live, self-playing WhatsApp demo (the actual product) -->
+        <div class="hero__demo" data-anim="phone">
+          <div class="phone-shell">
+            <div class="phone">
+              <div class="phone__bar">
+                <span class="phone__avatar" aria-hidden="true"></span>
+                <div class="phone__id">
+                  <strong>FitZone Gym</strong>
+                  <span class="phone__status"><i></i>online</span>
+                </div>
+                <span class="phone__wa" aria-hidden="true"></span>
+              </div>
+              <div class="phone__chat" id="chat" aria-label="Example conversation with the bot"></div>
+            </div>
+          </div>
+          <div class="float-badge float-badge--a" aria-hidden="true">
+            <span class="float-badge__ic" data-icon="calendar"></span> Trial booked
+          </div>
+          <div class="float-badge float-badge--b" aria-hidden="true">
+            <span class="float-badge__ic" data-icon="bell"></span> Renewal sent
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== MARQUEE ===================== -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__track">
+        <span>Lead capture</span><span class="sep">/</span>
+        <span>Trial booking</span><span class="sep">/</span>
+        <span>Renewal reminders</span><span class="sep">/</span>
+        <span>Check-in tracking</span><span class="sep">/</span>
+        <span>Win-back</span><span class="sep">/</span>
+        <span>24/7 answers</span><span class="sep">/</span>
+        <span>Daily digests</span><span class="sep">/</span>
+        <span>Broadcasts</span><span class="sep">/</span>
+        <span>Lead capture</span><span class="sep">/</span>
+        <span>Trial booking</span><span class="sep">/</span>
+        <span>Renewal reminders</span><span class="sep">/</span>
+        <span>Check-in tracking</span><span class="sep">/</span>
+        <span>Win-back</span><span class="sep">/</span>
+        <span>24/7 answers</span><span class="sep">/</span>
+        <span>Daily digests</span><span class="sep">/</span>
+        <span>Broadcasts</span><span class="sep">/</span>
+      </div>
+    </div>
+
+    <!-- ===================== STAT BAND ===================== -->
+    <section class="band" aria-label="What the bot handles">
+      <div class="band__inner">
+        <div class="stat" data-anim="fade">
+          <span class="stat__num" data-count="24" data-suffix="/7">0</span>
+          <span class="stat__label">always-on, no staff online</span>
+        </div>
+        <div class="stat" data-anim="fade">
+          <span class="stat__num" data-count="14">0</span>
+          <span class="stat__label">jobs run on autopilot</span>
+        </div>
+        <div class="stat" data-anim="fade">
+          <span class="stat__num" data-count="0">0</span>
+          <span class="stat__label">apps for members to install</span>
+        </div>
+        <div class="stat" data-anim="fade">
+          <span class="stat__num" data-count="1">0</span>
+          <span class="stat__label">number you already own</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== FEATURES (bento) ===================== -->
+    <section class="features" id="features">
+      <div class="section-head">
+        <span class="eyebrow-pill" data-anim="fade"><span class="dot"></span> Everything it does</span>
+        <h2 data-anim="fade">One bot. The whole member lifecycle.</h2>
+        <p class="section-head__sub" data-anim="fade">
+          From the first "are you open?" to the renewal reminder a year later,
+          GymPulse runs the conversations your team has no time for.
+        </p>
+      </div>
+
+      <div class="bento" id="bento">
+        <article class="tile tile--wide tile--hero spotlight" data-anim="tile">
+          <div class="tile__ic" data-icon="capture" aria-hidden="true"></div>
+          <h3>Instant lead capture</h3>
+          <p>Every new contact gets greeted automatically. The bot asks their goal, name, age and preferred time, then files the lead so nobody slips away.</p>
+          <div class="tile__chips"><span>auto-greet</span><span>goal</span><span>saved lead</span></div>
+        </article>
+
+        <article class="tile spotlight" data-anim="tile">
+          <div class="tile__ic" data-icon="calendar" aria-hidden="true"></div>
+          <h3>Free trial booking</h3>
+          <p>Shows open slots, books the seat and confirms, all inside the chat.</p>
+        </article>
+
+        <article class="tile spotlight" data-anim="tile">
+          <div class="tile__ic" data-icon="bell" aria-hidden="true"></div>
+          <h3>Trial reminders</h3>
+          <p>Pings before the session so fewer people forget and ghost.</p>
+        </article>
+
+        <article class="tile tile--tall tile--photo" data-anim="tile" style="--img:url('https://picsum.photos/seed/gympulse-iron/700/1000')">
+          <div class="tile__overlay">
+            <h3>Renewals that chase themselves</h3>
+            <p>7-day and 1-day expiry nudges, plus a one-tap renew that alerts your team.</p>
+          </div>
+        </article>
+
+        <article class="tile spotlight" data-anim="tile">
+          <div class="tile__ic" data-icon="check" aria-hidden="true"></div>
+          <h3>Check-in tracking</h3>
+          <p>Members text "in" and attendance is logged. Spot who went quiet.</p>
+        </article>
+
+        <article class="tile spotlight" data-anim="tile">
+          <div class="tile__ic" data-icon="heart" aria-hidden="true"></div>
+          <h3>Win-back nudges</h3>
+          <p>Notices members who stopped showing and reaches out to bring them back.</p>
+        </article>
+
+        <article class="tile spotlight" data-anim="tile">
+          <div class="tile__ic" data-icon="chat" aria-hidden="true"></div>
+          <h3>Trial feedback</h3>
+          <p>After a trial it asks how it went and captures the rating for you.</p>
+        </article>
+
+        <article class="tile tile--wide spotlight" data-anim="tile">
+          <div class="tile__ic" data-icon="brain" aria-hidden="true"></div>
+          <h3>24/7 answers</h3>
+          <p>Price, hours, location, trainers, facilities, parking. Set the facts once and it replies instantly, with a smart fallback for anything off-script.</p>
+          <div class="tile__chips"><span>pricing</span><span>hours</span><span>directions</span><span>trainers</span></div>
+        </article>
+
+        <article class="tile spotlight" data-anim="tile">
+          <div class="tile__ic" data-icon="clock" aria-hidden="true"></div>
+          <h3>Live open / closed</h3>
+          <p>Knows your hours and any closed-today override. Answers honestly.</p>
+        </article>
+
+        <article class="tile spotlight" data-anim="tile">
+          <div class="tile__ic" data-icon="terminal" aria-hidden="true"></div>
+          <h3>Run it from your phone</h3>
+          <p>Add slots, add members, pull today's leads and broadcast offers with commands.</p>
+        </article>
+
+        <article class="tile spotlight" data-anim="tile">
+          <div class="tile__ic" data-icon="digest" aria-hidden="true"></div>
+          <h3>Daily &amp; weekly digests</h3>
+          <p>A morning expiring list and a Monday recap of leads, trials and joins.</p>
+        </article>
+
+        <article class="tile spotlight" data-anim="tile">
+          <div class="tile__ic" data-icon="handoff" aria-hidden="true"></div>
+          <h3>Knows when to fetch a human</h3>
+          <p>Real buying signals get escalated to staff instead of being guessed at.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===================== HOW IT WORKS (sticky) ===================== -->
+    <section class="how" id="how">
+      <div class="how__grid">
+        <div class="how__rail">
+          <span class="eyebrow-pill"><span class="dot"></span> How it works</span>
+          <h2 class="how__title">Live in three moves.</h2>
+          <p class="how__lead">No new hardware. No member app. No per-message bill.</p>
+          <div class="how__progress"><span id="howFill"></span></div>
+        </div>
+
+        <ol class="how__steps">
+          <li class="hstep" data-anim="step">
+            <span class="hstep__no">01</span>
+            <div>
+              <h3>Link your WhatsApp</h3>
+              <p>Scan one QR code from your gym phone. The bot rides on your real number, so members chat the contact they already know.</p>
+            </div>
+          </li>
+          <li class="hstep" data-anim="step">
+            <span class="hstep__no">02</span>
+            <div>
+              <h3>Drop in your details</h3>
+              <p>Plans, prices, hours, trainers, facilities. One simple file, no code to touch. Change it any time.</p>
+            </div>
+          </li>
+          <li class="hstep" data-anim="step">
+            <span class="hstep__no">03</span>
+            <div>
+              <h3>Let it run</h3>
+              <p>It greets, books, reminds and renews while you coach. Glance at the daily digest, step in only when a human is needed.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ===================== PRICING ===================== -->
+    <section class="pricing" id="pricing">
+      <div class="section-head">
+        <span class="eyebrow-pill" data-anim="fade"><span class="dot"></span> Pricing</span>
+        <h2 data-anim="fade">Priced for your gym, not per message.</h2>
+        <p class="section-head__sub" data-anim="fade">
+          Pick a starting point or tell us about your gym for a tailored number.
+          Either way you get the full bot, your branding and setup help.
+        </p>
+      </div>
+
+      <div class="plans">
+        <div class="plan" data-anim="tile">
+          <div class="plan__core">
+            <h3 class="plan__name">Studio</h3>
+            <p class="plan__for">Single-location gyms</p>
+            <div class="plan__line"></div>
+            <ul class="plan__feat">
+              <li>Lead capture &amp; trial booking</li>
+              <li>Renewal &amp; check-in tracking</li>
+              <li>24/7 FAQ answers</li>
+              <li>Daily admin digest</li>
+            </ul>
+            <a class="btn btn--ghost btn--block" href="#quote" data-open-quote>Get a quote</a>
+          </div>
+        </div>
+
+        <div class="plan plan--featured" data-anim="tile">
+          <div class="plan__core">
+            <span class="plan__tag">Most popular</span>
+            <h3 class="plan__name">Chain</h3>
+            <p class="plan__for">Multi-branch operators</p>
+            <div class="plan__line"></div>
+            <ul class="plan__feat">
+              <li>Everything in Studio</li>
+              <li>Broadcast offers &amp; closures</li>
+              <li>Weekly performance recap</li>
+              <li>Priority human handoff</li>
+            </ul>
+            <a class="btn btn--solid btn--block magnetic" href="#quote" data-open-quote>
+              <span>Get a quote</span><span class="btn__ic" aria-hidden="true"></span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== RESULTS ===================== -->
+    <section class="results" id="results">
+      <figure class="quote" data-anim="fade">
+        <div class="quote__mark" aria-hidden="true">"</div>
+        <blockquote>
+          Leads used to die in an unread inbox. Now every enquiry gets a reply in
+          seconds and trials book themselves. My team finally coaches instead of typing.
+        </blockquote>
+        <figcaption>
+          <span class="quote__name">Arjun Mehta</span>
+          <span class="quote__role">Owner, Iron Forge Fitness, Pune</span>
+        </figcaption>
+      </figure>
+
+      <div class="results__mini">
+        <figure class="qcard" data-anim="tile">
+          <blockquote>Renewal reminders alone paid for it. Members no longer lapse just because they forgot.</blockquote>
+          <figcaption><span class="quote__name">Sneha Kulkarni</span><span class="quote__role">Manager, Pulse Studio, Mumbai</span></figcaption>
+        </figure>
+        <figure class="qcard" data-anim="tile">
+          <blockquote>Setup took an afternoon. The next morning it had already booked four trials overnight.</blockquote>
+          <figcaption><span class="quote__name">Rohit Nair</span><span class="quote__role">Founder, Summit Strength, Bengaluru</span></figcaption>
+        </figure>
+      </div>
+      <p class="results__note">Stories shown are illustrative.</p>
+    </section>
+
+    <!-- ===================== FINAL CTA ===================== -->
+    <section class="cta-band">
+      <div class="cta-band__inner" data-anim="fade">
+        <div class="cta-band__glow" aria-hidden="true"></div>
+        <h2>Turn your WhatsApp into your best salesperson.</h2>
+        <p>Start a free trial on your own number, or get a quote built around your gym.</p>
+        <div class="cta-band__actions">
+          <a class="btn btn--solid btn--lg magnetic" href="#trial" data-open-trial>
+            <span>Start free trial</span><span class="btn__ic" aria-hidden="true"></span>
+          </a>
+          <a class="btn btn--ghost btn--lg" href="#quote" data-open-quote>Get a quote</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__brand">
+        <a class="brand" href="#top" aria-label="GymPulse home">
+          <span class="brand__mark" aria-hidden="true"></span>
+          <span class="brand__name">GymPulse</span>
+        </a>
+        <p>The WhatsApp assistant that captures, books and renews while you train your members.</p>
+      </div>
+
+      <nav class="footer__col" aria-label="Product">
+        <h4>Product</h4>
+        <a href="#features">Features</a>
+        <a href="demo.html">Demo</a>
+        <a href="#how">How it works</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#trial" data-open-trial>Free trial</a>
+      </nav>
+
+      <nav class="footer__col" aria-label="Company">
+        <h4>Company</h4>
+        <a href="#quote" data-open-quote>Get a quote</a>
+        <a href="#results">Results</a>
+        <!-- TODO: real contact email / phone -->
+        <a href="#top">Contact</a>
+      </nav>
+
+      <div class="footer__col footer__social">
+        <h4>Follow</h4>
+        <!-- Social hrefs intentionally empty. Fill them in later. -->
+        <div class="social">
+          <a href="" class="social__link" aria-label="Instagram" data-social="instagram"><span class="social__icon" data-icon="instagram" aria-hidden="true"></span></a>
+          <a href="" class="social__link" aria-label="X" data-social="x"><span class="social__icon" data-icon="x" aria-hidden="true"></span></a>
+          <a href="" class="social__link" aria-label="WhatsApp" data-social="whatsapp"><span class="social__icon" data-icon="whatsapp" aria-hidden="true"></span></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer__base">
+      <span>&copy; <span id="year"></span> GymPulse. All rights reserved.</span>
+      <span class="footer__legal"><a href="#top">Privacy</a><a href="#top">Terms</a></span>
+    </div>
+  </footer>
+
+  <!-- ===================== MODAL ===================== -->
+  <div class="modal" id="modal" aria-hidden="true">
+    <div class="modal__backdrop" data-close></div>
+    <div class="modal__panel" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal__close" aria-label="Close" data-close>&times;</button>
+      <span class="eyebrow-pill" id="modalEyebrow"><span class="dot"></span> Get a quote</span>
+      <h3 id="modalTitle">Tell us about your gym</h3>
+      <p class="modal__sub" id="modalSub">We will reply with a plan built around your size and goals.</p>
+
+      <form class="form" id="leadForm" novalidate>
+        <input type="hidden" name="intent" id="formIntent" value="quote" />
+        <div class="field">
+          <label for="f-name">Your name</label>
+          <input id="f-name" name="name" type="text" autocomplete="name" required />
+          <p class="field__err" data-err-for="name">Please enter your name.</p>
+        </div>
+        <div class="field">
+          <label for="f-gym">Gym name</label>
+          <input id="f-gym" name="gym" type="text" required />
+          <p class="field__err" data-err-for="gym">Please enter your gym name.</p>
+        </div>
+        <div class="field">
+          <label for="f-phone">WhatsApp number</label>
+          <input id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+91 90000 00000" required />
+          <p class="field__err" data-err-for="phone">Please enter a valid number.</p>
+        </div>
+        <div class="field">
+          <label for="f-size">Members (roughly)</label>
+          <select id="f-size" name="size">
+            <option value="under-100">Under 100</option>
+            <option value="100-300">100 to 300</option>
+            <option value="300-700">300 to 700</option>
+            <option value="700-plus">700+</option>
+          </select>
+        </div>
+        <div class="field field--full">
+          <label for="f-msg">Anything we should know? <span class="field__opt">(optional)</span></label>
+          <textarea id="f-msg" name="message" rows="3"></textarea>
+        </div>
+        <button class="btn btn--solid btn--block btn--lg" type="submit" id="formSubmit">Send request</button>
+        <p class="form__status" id="formStatus" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

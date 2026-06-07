@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Demo - GymPulse | See the WhatsApp bot run a gym</title>
+  <meta name="description" content="Watch GymPulse handle real gym conversations on WhatsApp - lead capture, trial booking, renewals, check-ins, broadcasts and more - scripted from how the bot behaves in the wild." />
+
+  <meta property="og:title" content="GymPulse demo - the WhatsApp bot, in action" />
+  <meta property="og:description" content="Twelve jobs, twelve live conversations. See exactly what your members and your front desk would see." />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://api.fontshare.com/v2/css?f[]=clash-display@500,600,700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="orb orb--1" aria-hidden="true"></div>
+  <div class="orb orb--2" aria-hidden="true"></div>
+
+  <div class="scroll-prog" aria-hidden="true"><span id="progBar"></span></div>
+
+  <!-- ===================== NAV ===================== -->
+  <header class="nav" id="top">
+    <div class="nav__pill">
+      <a class="brand" href="index.html" aria-label="GymPulse home">
+        <span class="brand__mark" aria-hidden="true"></span>
+        <span class="brand__name">GymPulse</span>
+      </a>
+
+      <nav class="nav__links" aria-label="Primary">
+        <a href="index.html#features">Features</a>
+        <a href="demo.html" aria-current="page">Demo</a>
+        <a href="index.html#how">How it works</a>
+        <a href="index.html#pricing">Pricing</a>
+        <a href="index.html#results">Results</a>
+      </nav>
+
+      <div class="nav__cta">
+        <a class="btn btn--ghost" href="#quote" data-open-quote>Get a quote</a>
+        <a class="btn btn--solid magnetic" href="#trial" data-open-trial>
+          <span>Start free trial</span>
+          <span class="btn__ic" aria-hidden="true"></span>
+        </a>
+      </div>
+
+      <button class="nav__burger" aria-label="Open menu" aria-expanded="false" data-burger>
+        <span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="menu" id="menu" aria-hidden="true">
+    <nav class="menu__links" aria-label="Mobile">
+      <a href="index.html#features">Features</a>
+      <a href="demo.html" aria-current="page">Demo</a>
+      <a href="index.html#how">How it works</a>
+      <a href="index.html#pricing">Pricing</a>
+      <a href="index.html#results">Results</a>
+      <a class="btn btn--solid btn--lg" href="#trial" data-open-trial>Start free trial</a>
+      <a class="btn btn--ghost btn--lg" href="#quote" data-open-quote>Get a quote</a>
+    </nav>
+  </div>
+
+  <main>
+    <!-- ===================== INTRO ===================== -->
+    <section class="demo-hero">
+      <span class="eyebrow-pill" data-anim="fade"><span class="dot"></span> See it in action</span>
+      <h1 data-anim="fade">Twelve jobs. One bot.<br>Watch them play out.</h1>
+      <p data-anim="fade">Real conversations, the way your members and your front desk would actually see them on
+        WhatsApp - scripted straight from how GymPulse behaves in the wild.</p>
+    </section>
+
+    <nav class="demo-jump" aria-label="Jump to a scenario" data-anim="fade">
+      <a href="#lead-capture">Lead capture</a>
+      <a href="#trial-booking">Trial booking</a>
+      <a href="#trial-reminders">Trial reminders</a>
+      <a href="#renewals">Renewals</a>
+      <a href="#check-in">Check-ins</a>
+      <a href="#win-back">Win-back</a>
+      <a href="#trial-feedback">Trial feedback</a>
+      <a href="#faq">24/7 answers</a>
+      <a href="#open-closed">Open / closed</a>
+      <a href="#run-from-phone">Run from your phone</a>
+      <a href="#digests">Digests</a>
+      <a href="#human-handoff">Human handoff</a>
+    </nav>
+
+    <!-- ===================== 1. LEAD CAPTURE ===================== -->
+    <section class="demo-row" id="lead-capture" data-anim="fade">
+      <div class="demo-row__copy">
+        <span class="eyebrow-pill"><span class="dot"></span> Instant lead capture</span>
+        <h2>Every "are you open?" becomes a saved lead.</h2>
+        <p>New contacts get greeted automatically. The bot learns their goal, name and best time to train, then files
+          the lead before anyone has to ask twice.</p>
+      </div>
+      <div class="demo-row__phone" data-anim="fade">
+        <div class="phone-shell">
+          <div class="phone">
+            <div class="phone__bar">
+              <span class="phone__avatar" aria-hidden="true"></span>
+              <div class="phone__id"><strong>FitZone Gym</strong><span class="phone__status"><i></i>online</span></div>
+              <span class="phone__wa" aria-hidden="true"></span>
+            </div>
+            <div class="phone__chat" id="chat-lead-capture" aria-label="Example: lead capture conversation"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== 2. TRIAL BOOKING ===================== -->
+    <section class="demo-row demo-row--reverse" id="trial-booking" data-anim="fade">
+      <div class="demo-row__copy">
+        <span class="eyebrow-pill"><span class="dot"></span> Free trial booking</span>
+        <h2>Open slots, picked and confirmed - no back-and-forth.</h2>
+        <p>The bot shows real openings, locks the seat the moment someone replies, and confirms it in the same
+          thread. No phone tag, no double-booking.</p>
+      </div>
+      <div class="demo-row__phone" data-anim="fade">
+        <div class="phone-shell">
+          <div class="phone">
+            <div class="phone__bar">
+              <span class="phone__avatar" aria-hidden="true"></span>
+              <div class="phone__id"><strong>FitZone Gym</strong><span class="phone__status"><i></i>online</span></div>
+              <span class="phone__wa" aria-hidden="true"></span>
+            </div>
+            <div class="phone__chat" id="chat-trial-booking" aria-label="Example: trial booking conversation"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== 3. TRIAL REMINDERS ===================== -->
+    <section class="demo-row" id="trial-reminders" data-anim="fade">
+      <div class="demo-row__copy">
+        <span class="eyebrow-pill"><span class="dot"></span> Trial reminders</span>
+        <h2>A nudge before the session, so fewer no-shows.</h2>
+        <p>A friendly heads-up lands the day before - what to bring, when to arrive - so people who booked actually
+          turn up.</p>
+      </div>
+      <div class="demo-row__phone" data-anim="fade">
+        <div class="phone-shell">
+          <div class="phone">
+            <div class="phone__bar">
+              <span class="phone__avatar" aria-hidden="true"></span>
+              <div class="phone__id"><strong>FitZone Gym</strong><span class="phone__status"><i></i>online</span></div>
+              <span class="phone__wa" aria-hidden="true"></span>
+            </div>
+            <div class="phone__chat" id="chat-trial-reminders" aria-label="Example: trial reminder conversation"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== 4. RENEWALS ===================== -->
+    <section class="demo-row demo-row--reverse" id="renewals" data-anim="fade">
+      <div class="demo-row__copy">
+        <span class="eyebrow-pill"><span class="dot"></span> Renewals that chase themselves</span>
+        <h2>Expiry reminders that close themselves.</h2>
+        <p>Seven days out, then the day of - with a one-tap renew that charges and confirms without your front desk
+          lifting a finger.</p>
+      </div>
+      <div class="demo-row__phone" data-anim="fade">
+        <div class="phone-shell">
+          <div class="phone">
+            <div class="phone__bar">
+              <span class="phone__avatar" aria-hidden="true"></span>
+              <div class="phone__id"><strong>FitZone Gym</strong><span class="phone__status"><i></i>online</span></div>
+              <span class="phone__wa" aria-hidden="true"></span>
+            </div>
+            <div class="phone__chat" id="chat-renewals" aria-label="Example: renewal reminder conversation"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== 5. CHECK-IN ===================== -->
+    <section class="demo-row" id="check-in" data-anim="fade">
+      <div class="demo-row__copy">
+        <span class="eyebrow-pill"><span class="dot"></span> Check-in tracking</span>
+        <h2>"in" is all it takes to log a session.</h2>
+        <p>Members text when they arrive, attendance is logged automatically, and streaks keep them coming back for
+          more.</p>
+      </div>
+      <div class="demo-row__phone" data-anim="fade">
+        <div class="phone-shell">
+          <div class="phone">
+            <div class="phone__bar">
+              <span class="phone__avatar" aria-hidden="true"></span>
+              <div class="phone__id"><strong>FitZone Gym</strong><span class="phone__status"><i></i>online</span></div>
+              <span class="phone__wa" aria-hidden="true"></span>
+            </div>
+            <div class="phone__chat" id="chat-check-in" aria-label="Example: check-in conversation"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== 6. WIN-BACK ===================== -->
+    <section class="demo-row demo-row--reverse" id="win-back" data-anim="fade">
+      <div class="demo-row__copy">
+        <span class="eyebrow-pill"><span class="dot"></span> Win-back nudges</span>
+        <h2>Reaches out before a member quietly disappears.</h2>
+        <p>The bot spots who's gone quiet and sends a warm, personal nudge - often with an offer worth coming back
+          for.</p>
+      </div>
+      <div class="demo-row__phone" data-anim="fade">
+        <div class="phone-shell">
+          <div class="phone">
+            <div class="phone__bar">
+              <span class="phone__avatar" aria-hidden="true"></span>
+              <div class="phone__id"><strong>FitZone Gym</strong><span class="phone__status"><i></i>online</span></div>
+              <span class="phone__wa" aria-hidden="true"></span>
+            </div>
+            <div class="phone__chat" id="chat-win-back" aria-label="Example: win-back conversation"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== 7. TRIAL FEEDBACK ===================== -->
+    <section class="demo-row" id="trial-feedback" data-anim="fade">
+      <div class="demo-row__copy">
+        <span class="eyebrow-pill"><span class="dot"></span> Trial feedback</span>
+        <h2>Asks how it went, while it's still fresh.</h2>
+        <p>A quick rating after the session, captured automatically - and turned straight into a membership offer
+          while the trial is still top of mind.</p>
+      </div>
+      <div class="demo-row__phone" data-anim="fade">
+        <div class="phone-shell">
+          <div class="phone">
+            <div class="phone__bar">
+              <span class="phone__avatar" aria-hidden="true"></span>
+              <div class="phone__id"><strong>FitZone Gym</strong><span class="phone__status"><i></i>online</span></div>
+              <span class="phone__wa" aria-hidden="true"></span>
+            </div>
+            <div class="phone__chat" id="chat-trial-feedback" aria-label="Example: trial feedback conversation"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== 8. 24/7 ANSWERS ===================== -->
+    <section class="demo-row demo-row--reverse" id="faq" data-anim="fade">
+      <div class="demo-row__copy">
+        <span class="eyebrow-pill"><span class="dot"></span> 24/7 answers</span>
+        <h2>Price, hours, trainers - answered instantly.</h2>
+        <p>Set the facts once and the bot replies on the spot, any hour, with a smart fallback for anything
+          off-script.</p>
+      </div>
+      <div class="demo-row__phone" data-anim="fade">
+        <div class="phone-shell">
+          <div class="phone">
+            <div class="phone__bar">
+              <span class="phone__avatar" aria-hidden="true"></span>
+              <div class="phone__id"><strong>FitZone Gym</strong><span class="phone__status"><i></i>online</span></div>
+              <span class="phone__wa" aria-hidden="true"></span>
+            </div>
+            <div class="phone__chat" id="chat-faq" aria-label="Example: 24/7 FAQ conversation"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== 9. OPEN / CLOSED ===================== -->
+    <section class="demo-row" id="open-closed" data-anim="fade">
+      <div class="demo-row__copy">
+        <span class="eyebrow-pill"><span class="dot"></span> Live open / closed</span>
+        <h2>Knows your hours - and today's exceptions.</h2>
+        <p>Closures, holidays, deep-clean days: the bot answers honestly in the moment, instead of repeating a stale
+          schedule.</p>
+      </div>
+      <div class="demo-row__phone" data-anim="fade">
+        <div class="phone-shell">
+          <div class="phone">
+            <div class="phone__bar">
+              <span class="phone__avatar" aria-hidden="true"></span>
+              <div class="phone__id"><strong>FitZone Gym</strong><span class="phone__status"><i></i>online</span></div>
+              <span class="phone__wa" aria-hidden="true"></span>
+            </div>
+            <div class="phone__chat" id="chat-open-closed" aria-label="Example: open / closed conversation"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== 10. RUN FROM YOUR PHONE ===================== -->
+    <section class="demo-row demo-row--reverse" id="run-from-phone" data-anim="fade">
+      <div class="demo-row__copy">
+        <span class="eyebrow-pill"><span class="dot"></span> Run it from your phone</span>
+        <h2>Your whole front desk, in a chat with the bot.</h2>
+        <p>Pull today's leads, add a slot, fire off a broadcast - all with a one-line command sent from your own
+          number.</p>
+      </div>
+      <div class="demo-row__phone" data-anim="fade">
+        <div class="phone-shell">
+          <div class="phone">
+            <div class="phone__bar">
+              <span class="phone__avatar" aria-hidden="true"></span>
+              <div class="phone__id"><strong>GymPulse Bot</strong><span class="phone__status"><i></i>your assistant</span></div>
+              <span class="phone__wa" aria-hidden="true"></span>
+            </div>
+            <div class="phone__chat" id="chat-run-from-phone" aria-label="Example: running the gym from your phone"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== 11. DAILY & WEEKLY DIGESTS ===================== -->
+    <section class="demo-row" id="digests" data-anim="fade">
+      <div class="demo-row__copy">
+        <span class="eyebrow-pill"><span class="dot"></span> Daily &amp; weekly digests</span>
+        <h2>The morning brief that keeps you ahead.</h2>
+        <p>Expiring memberships, overnight leads, today's check-ins - waiting in your chat before the doors even
+          open.</p>
+      </div>
+      <div class="demo-row__phone" data-anim="fade">
+        <div class="phone-shell">
+          <div class="phone">
+            <div class="phone__bar">
+              <span class="phone__avatar" aria-hidden="true"></span>
+              <div class="phone__id"><strong>GymPulse Bot</strong><span class="phone__status"><i></i>your assistant</span></div>
+              <span class="phone__wa" aria-hidden="true"></span>
+            </div>
+            <div class="phone__chat" id="chat-digests" aria-label="Example: morning digest conversation"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== 12. HUMAN HANDOFF ===================== -->
+    <section class="demo-row demo-row--reverse" id="human-handoff" data-anim="fade">
+      <div class="demo-row__copy">
+        <span class="eyebrow-pill"><span class="dot"></span> Knows when to fetch a human</span>
+        <h2>Knows exactly when to step aside.</h2>
+        <p>Real buying signals - and real problems - get escalated to your team instead of being guessed at by a
+          script.</p>
+      </div>
+      <div class="demo-row__phone" data-anim="fade">
+        <div class="phone-shell">
+          <div class="phone">
+            <div class="phone__bar">
+              <span class="phone__avatar" aria-hidden="true"></span>
+              <div class="phone__id"><strong>FitZone Gym</strong><span class="phone__status"><i></i>online</span></div>
+              <span class="phone__wa" aria-hidden="true"></span>
+            </div>
+            <div class="phone__chat" id="chat-human-handoff" aria-label="Example: human handoff conversation"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== FINAL CTA ===================== -->
+    <section class="cta-band">
+      <div class="cta-band__inner" data-anim="fade">
+        <div class="cta-band__glow" aria-hidden="true"></div>
+        <h2>That's the bot. Now put it on your number.</h2>
+        <p>Start a free trial on your own WhatsApp, or get a quote built around your gym.</p>
+        <div class="cta-band__actions">
+          <a class="btn btn--solid btn--lg magnetic" href="#trial" data-open-trial>
+            <span>Start free trial</span><span class="btn__ic" aria-hidden="true"></span>
+          </a>
+          <a class="btn btn--ghost btn--lg" href="#quote" data-open-quote>Get a quote</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__brand">
+        <a class="brand" href="index.html" aria-label="GymPulse home">
+          <span class="brand__mark" aria-hidden="true"></span>
+          <span class="brand__name">GymPulse</span>
+        </a>
+        <p>The WhatsApp assistant that captures, books and renews while you train your members.</p>
+      </div>
+
+      <nav class="footer__col" aria-label="Product">
+        <h4>Product</h4>
+        <a href="index.html#features">Features</a>
+        <a href="demo.html" aria-current="page">Demo</a>
+        <a href="index.html#how">How it works</a>
+        <a href="index.html#pricing">Pricing</a>
+        <a href="#trial" data-open-trial>Free trial</a>
+      </nav>
+
+      <nav class="footer__col" aria-label="Company">
+        <h4>Company</h4>
+        <a href="#quote" data-open-quote>Get a quote</a>
+        <a href="index.html#results">Results</a>
+        <a href="index.html#top">Contact</a>
+      </nav>
+
+      <div class="footer__col footer__social">
+        <h4>Follow</h4>
+        <div class="social">
+          <a href="" class="social__link" aria-label="Instagram" data-social="instagram"><span class="social__icon" data-icon="instagram" aria-hidden="true"></span></a>
+          <a href="" class="social__link" aria-label="X" data-social="x"><span class="social__icon" data-icon="x" aria-hidden="true"></span></a>
+          <a href="" class="social__link" aria-label="WhatsApp" data-social="whatsapp"><span class="social__icon" data-icon="whatsapp" aria-hidden="true"></span></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer__base">
+      <span>&copy; <span id="year"></span> GymPulse. All rights reserved.</span>
+      <span class="footer__legal"><a href="index.html#top">Privacy</a><a href="index.html#top">Terms</a></span>
+    </div>
+  </footer>
+
+  <!-- ===================== MODAL ===================== -->
+  <div class="modal" id="modal" aria-hidden="true">
+    <div class="modal__backdrop" data-close></div>
+    <div class="modal__panel" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal__close" aria-label="Close" data-close>&times;</button>
+      <span class="eyebrow-pill" id="modalEyebrow"><span class="dot"></span> Get a quote</span>
+      <h3 id="modalTitle">Tell us about your gym</h3>
+      <p class="modal__sub" id="modalSub">We will reply with a plan built around your size and goals.</p>
+
+      <form class="form" id="leadForm" novalidate>
+        <input type="hidden" name="intent" id="formIntent" value="quote" />
+        <div class="field">
+          <label for="f-name">Your name</label>
+          <input id="f-name" name="name" type="text" autocomplete="name" required />
+          <p class="field__err" data-err-for="name">Please enter your name.</p>
+        </div>
+        <div class="field">
+          <label for="f-gym">Gym name</label>
+          <input id="f-gym" name="gym" type="text" required />
+          <p class="field__err" data-err-for="gym">Please enter your gym name.</p>
+        </div>
+        <div class="field">
+          <label for="f-phone">WhatsApp number</label>
+          <input id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+91 90000 00000" required />
+          <p class="field__err" data-err-for="phone">Please enter a valid number.</p>
+        </div>
+        <div class="field">
+          <label for="f-size">Members (roughly)</label>
+          <select id="f-size" name="size">
+            <option value="under-100">Under 100</option>
+            <option value="100-300">100 to 300</option>
+            <option value="300-700">300 to 700</option>
+            <option value="700-plus">700+</option>
+          </select>
+        </div>
+        <div class="field field--full">
+          <label for="f-msg">Anything we should know? <span class="field__opt">(optional)</span></label>
+          <textarea id="f-msg" name="message" rows="3"></textarea>
+        </div>
+        <button class="btn btn--solid btn--block btn--lg" type="submit" id="formSubmit">Send request</button>
+        <p class="form__status" id="formStatus" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="script.js"></script>
+  <script src="demo.js"></script>
+</body>
+</html>
