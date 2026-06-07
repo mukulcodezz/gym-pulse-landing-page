@@ -61,9 +61,22 @@ Switched via a single `TRANSPORT=` env variable. Same bot logic runs on both.
 - Scroll-triggered entrance animations
 - Modal lead capture forms (trial + quote)
 - Fully responsive, mobile-first
+- Privacy Policy + Terms of Service pages (`privacy.html`, `terms.html`)
 
 ---
 
-## Live demo
+## Pages
 
-Open `demo.html` for an interactive walkthrough of the bot conversation flow.
+| File | Description |
+|------|-------------|
+| `index.html` | Main landing page |
+| `demo.html` | Interactive bot conversation walkthrough |
+| `privacy.html` | Privacy Policy |
+| `terms.html` | Terms of Service |
+
+---
+
+## Legal
+
+- [Privacy Policy](https://gympulse-bot.vercel.app/privacy.html) — covers data collected, AI providers, WhatsApp/Meta processing, retention, and user rights
+- [Terms of Service](https://gympulse-bot.vercel.app/terms.html) — covers acceptable use, WhatsApp compliance, AI disclaimer, liability limits, and India governing law
