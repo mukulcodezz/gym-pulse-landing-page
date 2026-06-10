@@ -99,7 +99,7 @@ async function callAI(message) {
       const r = await fetch(GROQ_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${process.env.LANDING_GROQ_API_KEY}` },
-        body: payload('llama-3.1-8b-instant'),
+        body: payload('llama-3.3-70b-versatile'),
         signal: AbortSignal.timeout(9000),
       });
       if (r.ok) {
