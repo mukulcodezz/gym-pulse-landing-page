@@ -180,7 +180,7 @@
     try {
       history.push({ role: 'user', content: text });
 
-      var resp = await fetch('/api/chat', {
+      var resp = await fetch('https://gympulse-backend-production.up.railway.app/api/chat', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
