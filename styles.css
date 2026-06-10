@@ -143,8 +143,9 @@ main { position: relative; z-index: 1; }
 .brand__mark::after { content: ""; position: absolute; inset: 6px 9px; background: var(--accent-ink); border-radius: 2px; }
 .brand__name { font-size: 1.12rem; letter-spacing: -0.02em; }
 
-.nav__links { display: flex; gap: 1.7rem; margin-right: auto; }
-.nav__links a { color: var(--muted); font-size: 0.92rem; font-weight: 500; position: relative; transition: color 0.3s; }
+.nav__links { display: flex; gap: 1.7rem; margin-right: auto; flex-wrap: nowrap; }
+.nav__links a { color: var(--muted); font-size: 0.92rem; font-weight: 500; position: relative; transition: color 0.3s; white-space: nowrap; }
+.nav.is-tight .nav__links { gap: 1.1rem; }
 .nav__links a::after { content: ""; position: absolute; left: 0; bottom: -4px; width: 0; height: 1px; background: var(--accent); transition: width 0.4s var(--spring); }
 .nav__links a:hover { color: var(--text); }
 .nav__links a:hover::after { width: 100%; }
