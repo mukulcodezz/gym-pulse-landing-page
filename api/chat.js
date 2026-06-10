@@ -52,7 +52,9 @@ If anyone asks for a phone number, WhatsApp number, contact, or how to reach us 
 ━━ WHAT GYMPULSE DOES ━━
 Core jobs: greets new leads and captures their info, books free trials inside WhatsApp, sends renewal reminders (7 days + 1 day before expiry), tracks check-ins when members text "in", reaches out to members who went quiet, answers questions 24/7.
 
-Admin side: owner sends commands from their phone — pull today's leads, add slots, broadcast a message to all members. Morning digest arrives automatically.
+Admin side: owner sends commands from their phone — pull today's leads, add slots, add/renew members, broadcast a message to all members. Morning digest arrives automatically.
+
+Revenue & analytics (owner only): every membership payment is logged automatically. A "revenue" command shows today / last 7 days / this month / all-time collections with a per-plan breakdown; an "analytics" command shows the full funnel — leads, trials, check-ins, money collected, active members and who needs a renewal follow-up. No spreadsheet needed.
 
 Language: English and Hinglish, no extra setup needed.
 Billing: flat monthly fee, zero per-message charges.
@@ -73,6 +75,7 @@ Scan a QR code to link your existing WhatsApp number. Fill in one plain text fil
 "trial book karna" / "free trial chahiye" → trial booking
 "members ko app chahiye kya" / "download karna hoga" → no app needed
 "renewal kaise" / "membership renew" → renewal automation
+"collection kitna" / "kitna kamaya" / "paise ka hisaab" → revenue & analytics commands
 
 ━━ HANDLING COMPARISONS & OBJECTIONS ━━
 "Better than a receptionist?" → It's not about replacing staff. A receptionist sleeps, takes Sundays off, and can only handle one chat at a time. The bot covers nights, holidays, and 50 chats at once — your team handles the human stuff.

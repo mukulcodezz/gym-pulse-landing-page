@@ -114,6 +114,15 @@
         { side: "in", t: "I want to cancel and get a refund on my membership" },
         { side: "out", t: "I hear you — that needs a person's call. I've flagged this to Priya at the front desk; she'll reach out within the hour. Anything else I can help with meanwhile?" }
       ]
+    },
+    {
+      id: "revenue",
+      script: [
+        { side: "in", t: "/revenue" },
+        { side: "out", t: "💰 Revenue<br>Today: ₹4,500 (3 payments)<br>Last 7 days: ₹21,000 (9)<br>This month: ₹86,500 (41)<br>Last month: ₹78,000 (36)<br><br>This month by plan:<br>• Annual — ₹42,000 (3x)<br>• Quarterly — ₹28,000 (7x)<br>• Monthly — ₹16,500 (11x)" },
+        { side: "in", t: "/analytics 30" },
+        { side: "out", t: "📊 Last 30 days<br><br>Funnel: 27 leads → 14 trials → 9 joined<br>Collected: ₹86,500 (41 payments)<br>Check-ins: 412 (avg 13.7/day)<br>Active members: 183 · 6 need renewal follow-up" }
+      ]
     }
   ];
 
