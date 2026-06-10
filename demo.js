@@ -9,6 +9,12 @@
 
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+  function demoDate(offsetDays) {
+    var d = new Date();
+    d.setDate(d.getDate() + offsetDays);
+    return d.toLocaleDateString("en-IN", { weekday: "short", day: "numeric", month: "short" });
+  }
+
   var DEMOS = [
     {
       id: "lead-capture",
@@ -25,9 +31,9 @@
       id: "trial-booking",
       script: [
         { side: "in", t: "Can I try a class before joining?" },
-        { side: "out", t: "Of course! Open trial slots:<br>1. Tue 9 Jun – 6:00 PM (3 spots)<br>2. Thu 11 Jun – 7:00 AM (5 spots)" },
+        { side: "out", t: "Of course! Open trial slots:<br>1. " + demoDate(2) + " – 6:00 PM (3 spots)<br>2. " + demoDate(4) + " – 7:00 AM (5 spots)" },
         { side: "in", t: "2" },
-        { side: "out", t: "Booked ✅ Thu 11 Jun, 7:00 AM. I'll remind you the day before — see you then!" }
+        { side: "out", t: "Booked ✅ " + demoDate(4) + ", 7:00 AM. I'll remind you the day before — see you then!" }
       ]
     },
     {
@@ -41,7 +47,7 @@
     {
       id: "renewals",
       script: [
-        { side: "out", t: "Hey Rohan — your membership expires in 7 days (15 Jun). Renew now and lock in your rate?" },
+        { side: "out", t: "Hey Rohan — your membership expires in 7 days (" + demoDate(7) + "). Renew now and lock in your rate?" },
         { side: "in", t: "yes, renew me" },
         { side: "out", t: "Done ✅ Renewed for 1 month, charged to your saved method. Receipt sent — see you at the gym!" }
       ]
@@ -97,7 +103,7 @@
     {
       id: "digests",
       script: [
-        { side: "out", t: "🌅 Morning digest — Tue 9 Jun<br>• 3 memberships expiring today<br>• 2 new leads overnight<br>• 11 check-ins so far" },
+        { side: "out", t: "🌅 Morning digest — " + demoDate(0) + "<br>• 3 memberships expiring today<br>• 2 new leads overnight<br>• 11 check-ins so far" },
         { side: "in", t: "send renewal reminders to those 3" },
         { side: "out", t: "Sent to all three ✅ I'll follow up tomorrow if they haven't renewed yet." }
       ]

@@ -144,13 +144,20 @@
      ANIMATED WHATSAPP CHAT  (the product, playing itself)
      =========================================================== */
   var chat = document.getElementById("chat");
+
+  function demoDate(offsetDays) {
+    var d = new Date();
+    d.setDate(d.getDate() + offsetDays);
+    return d.toLocaleDateString("en-IN", { weekday: "short", day: "numeric", month: "short" });
+  }
+
   var SCRIPT = [
     { side: "in",  t: "Hi, do you have a free trial?" },
     { side: "out", t: "Welcome to FitZone! Of course. What is your main goal?<br>1. Weight loss  2. Muscle gain  3. General fitness" },
     { side: "in",  t: "2" },
-    { side: "out", t: "Great choice. Here are our open trial slots:<br>1. Tue, 7 Jun - 6:00 PM (3 spots)<br>2. Wed, 8 Jun - 7:00 AM (5 spots)" },
+    { side: "out", t: "Great choice. Here are our open trial slots:<br>1. " + demoDate(2) + " - 6:00 PM (3 spots)<br>2. " + demoDate(3) + " - 7:00 AM (5 spots)" },
     { side: "in",  t: "1" },
-    { side: "out", t: "Booked for Tue 6:00 PM. I will remind you before. See you then 💪" }
+    { side: "out", t: "Booked for " + demoDate(2) + " 6:00 PM. I will remind you before. See you then 💪" }
   ];
 
   function clock() {
