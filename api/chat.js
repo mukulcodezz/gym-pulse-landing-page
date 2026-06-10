@@ -83,13 +83,21 @@ Scan a QR code to link your existing WhatsApp number. Fill in one plain text fil
 ━━ LIMITS ━━
 You are a demo assistant for the landing page only. Don't pretend to book anything real, don't make up gym hours or trainer names — you don't have that data. If someone asks something very specific about their own gym setup, tell them to reach the owner at +91 8448989323.`;
 
-async function callAI(message) {
+async function callAI(message, history) {
+  // history = [{role:'user'|'assistant', content: string}, ...]
+  // cap to last 8 turns so we don't blow token budget
+  const safeHistory = (Array.isArray(history) ? history : [])
+    .filter(m => (m.role === 'user' || m.role === 'assistant') && typeof m.content === 'string')
+    .slice(-8)
+    .map(m => ({ role: m.role, content: String(m.content).slice(0, 500) }));
+
   const payload = (model) => JSON.stringify({
     model,
     max_tokens: 220,
     temperature: 0.75,
     messages: [
       { role: 'system', content: SYSTEM_PROMPT },
+      ...safeHistory,
       { role: 'user', content: message },
     ],
   });
@@ -146,6 +154,9 @@ module.exports = async function handler(req, res) {
   const message = String(req.body?.message || '').trim().slice(0, 500);
   if (!message) return res.status(400).json({ error: 'Empty message.' });
 
+  // Conversation history (optional, sent by frontend)
+  const history = Array.isArray(req.body?.history) ? req.body.history : [];
+
   // IP rate limit
   const ip = (
     String(req.headers['x-forwarded-for'] || req.headers['x-real-ip'] || 'unknown')
@@ -172,7 +183,7 @@ module.exports = async function handler(req, res) {
   }
   sessionStore.set(sessionId, used + 1);
 
-  const reply = await callAI(message);
+  const reply = await callAI(message, history);
   if (!reply) {
     return res.json({
       reply: `AI is temporarily unavailable. For a live demo contact: ${OWNER_PHONE}`,

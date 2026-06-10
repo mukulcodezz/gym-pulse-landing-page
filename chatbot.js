@@ -24,6 +24,7 @@
   var SID = getSessionId();
   var isOpen = false;
   var busy = false;
+  var history = []; // [{role:'user'|'assistant', content}]
 
   /* ── Build widget DOM ── */
   var btn = document.createElement('button');
@@ -177,13 +178,15 @@
     var dots = typing();
 
     try {
+      history.push({ role: 'user', content: text });
+
       var resp = await fetch('/api/chat', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           'X-Session-ID': SID,
         },
-        body: JSON.stringify({ message: text }),
+        body: JSON.stringify({ message: text, history: history.slice(0, -1) }),
       });
 
       var data = await resp.json();
@@ -191,6 +194,7 @@
 
       if (data.reply) {
         incCount();
+        history.push({ role: 'assistant', content: data.reply });
         bubble(data.reply, 'bot');
         updateQuota();
         if (data.limitReached || getCount() >= MAX_MSGS) {
